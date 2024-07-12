@@ -1,0 +1,53 @@
+ul{
+    list-style-type: none;
+}
+
+img{
+    display: block;
+    max-width:300px !important;
+    max-height:600px !important;
+    width: auto;
+    height: auto;
+}
+
+.movie-details{
+    margin: auto;
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    outline-style: solid;
+    outline-color: #008CBA;
+}
+
+.movie-genres{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.movie-info{
+    margin: .1rem;
+    padding: .1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.movie-info > li{
+    width: 100%;
+    margin: .7rem 0;
+    padding: .1rem;
+    border-style: solid;
+    border-color: #008CBA;
+}
+
+.movie-genres{
+    padding: .1rem;
+}
+
+.movie-genres > li{
+    margin: .1rem .3rem;
+}
