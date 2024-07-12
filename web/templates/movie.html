@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/movie_details.css">
+    <title>{{ .Title }}</title>
+</head>
+
+<body>
+    <h1>{{ .Heading }}</h1>
+
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <div class="movie-details">
+        <img src="https://image.tmdb.org/t/p/w185{{ .Movie.ImagePath }}" alt="movie poster">
+        <ul class="movie-info">
+            {{ if .Movie.Title }}
+            <li>{{ .Movie.Title }}</li>
+            {{ else }}
+            <li>This movie has no title.</li>
+            {{ end }}
+            {{ if .Movie.Overview }}
+            <li>{{ .Movie.Overview }}</li>
+            {{ else }}
+            <li>This movie has no description.</li>
+            {{ end }}
+            {{ if .Movie.Genres }}
+            <ul class="movie-genres">
+                {{ range .Movie.Genres }}
+                <li><a href="/genre/{{ .Id }}/1">{{ .Name }}</a></li>
+                {{ end }}
+            </ul>
+            {{ end }}
+            {{ if .Movie.ReleaseDate }}
+            <li>{{ .Movie.ReleaseDate }}</li>
+            {{ else }}
+            <li>This movie has no release date.</li>
+            {{ end }}
+        </ul>
+
+    </div>
+</body>
+
+</html>

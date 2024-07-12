@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> {{ .Title }} </title>
+    <title>{{ .Title }}</title>
 </head>
+
 <body>
-    <h1> {{ .Heading }} </h1>
+    {{ .Heading }}
+
     <ul>
         <li><a href="/home">Home</a></li>
         <li><a href="/contact">Contact</a></li>
-    </ul>
-    <a href="/discover/1">Discover</a>
-    {{ range $i, $e := .Movies }}
-        <p>{{ .Title }}</p>
-        {{ if eq $i 3 }}
-            {{ break }}
+
+        {{ range .Discover.Results }}
+        <a href="/movie/{{ .Id }}">{{ .Title }}</a>
         {{ end }}
-    {{ end }}
+    </ul>
 </body>
+
 </html>
