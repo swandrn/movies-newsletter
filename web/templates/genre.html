@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/paginations.css">
     <title>{{ .Title }}</title>
 </head>
 
@@ -16,6 +17,45 @@
 
         {{ range .Discover.Results }}
         <a href="/movie/{{ .Id }}">{{ .Title }}</a>
+        {{ end }}
+    </ul>
+
+    <!-- Pagination -->
+    <ul class="pagination">
+        {{ if ne .Discover.Page 1 }}
+        <li><a href="/discover/{{ .PreviousPage .Discover.Page }}">Previous</a></li>
+        {{ if .ShowFirstPage .Discover.Page }}
+        <li><a href="/discover/1">1</a></li>
+        <li>...</li>
+        {{ end }}
+        {{ end }}
+
+        {{ if .ShowPagination .Discover.Page }}
+        {{ range $i, $page := .Pagination .Discover.Page }}
+        <li><a href="/discover/{{ $page }}">{{ $page }}</a></li>
+        {{ end }}
+
+        <!-- First few pages of pagination -->
+        {{ else if lt .Discover.Page 3 }}
+        <li><a href="/discover/1">1</a></li>
+        <li><a href="/discover/2">2</a></li>
+        <li><a href="/discover/3">3</a></li>
+        <li><a href="/discover/4">4</a></li>
+        <li><a href="/discover/5">5</a></li>
+        
+        <!-- Last few pages of pagination -->
+        {{ else }}
+        {{ range $i, $page := .LastPages }}
+        <li><a href="/discover/{{ $page }}">{{ $page }}</a></li>
+        {{ end }}
+        {{ end }}
+
+        {{ if ne .Discover.Page .Discover.TotalPages }}
+        {{ if .ShowLastPage .Discover.Page }}
+        <li>...</li>
+        <li><a href="/discover/{{ .Discover.TotalPages }}">{{ .Discover.TotalPages }}</a></li>
+        {{ end }}
+        <li><a href="/discover/{{ .NextPage .Discover.Page }}">Next</a></li>
         {{ end }}
     </ul>
 </body>
