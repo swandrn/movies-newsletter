@@ -178,6 +178,46 @@ type GenrePage struct {
 	Discover api.SearchResult
 }
 
+func (GenrePage) Pagination(page int) []int {
+	return []int{
+		page - 2,
+		page - 1,
+		page,
+		page + 1,
+		page + 2,
+	}
+}
+
+func (dp GenrePage) ShowPagination(page int) bool {
+	return (page < dp.Discover.TotalPages-2 && page > 2)
+}
+
+func (dp GenrePage) ShowFirstPage(page int) bool {
+	return page > 3
+}
+
+func (dp GenrePage) ShowLastPage(page int) bool {
+	return page < dp.Discover.TotalPages-2
+}
+
+func (dp GenrePage) LastPages() []int {
+	return []int{
+		dp.Discover.TotalPages - 4,
+		dp.Discover.TotalPages - 3,
+		dp.Discover.TotalPages - 2,
+		dp.Discover.TotalPages - 1,
+		dp.Discover.TotalPages,
+	}
+}
+
+func (GenrePage) PreviousPage(page int) int {
+	return page - 1
+}
+
+func (GenrePage) NextPage(page int) int {
+	return page + 1
+}
+
 func GenreHandler(w http.ResponseWriter, r *http.Request) {
 	gets := strings.Split(strings.TrimPrefix(r.URL.Path, "/genre/"), "/")
 	page, err := strconv.Atoi(gets[1])
