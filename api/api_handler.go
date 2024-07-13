@@ -57,7 +57,9 @@ func FetchMoviesByPage(pageNumber int) (SearchResult, error) {
 	}
 
 	//Can only query first 500 pages
-	searchResult.TotalPages = 500
+	if searchResult.TotalPages > 500 {
+		searchResult.TotalPages = 500
+	}
 
 	return searchResult, nil
 }
@@ -90,7 +92,9 @@ func FetchMoviesByGenre(pageNumber int, genreId int) (SearchResult, error) {
 	}
 
 	//Can only query first 500 pages
-	searchResult.TotalPages = 500
+	if searchResult.TotalPages > 500 {
+		searchResult.TotalPages = 500
+	}
 
 	return searchResult, nil
 }
