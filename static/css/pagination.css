@@ -1,0 +1,40 @@
+.pagination {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: .2rem .8rem;
+    list-style-type: none;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    background-color: rgba(241, 241, 241, 1);
+    border-style: solid;
+    border-color: rgb(181, 181, 181);
+    border-width: 1px;
+    border-radius: 10px;
+}
+
+.pagination>li {
+    background-color: #008CBA;
+    color: white;
+    padding: .1rem .4rem;
+    border-radius: 2px;
+}
+
+.pagination>li:hover {
+    background-color: #146c8a;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: white;
+}
+
+.pagination a:visited {
+    color: white;
+}
