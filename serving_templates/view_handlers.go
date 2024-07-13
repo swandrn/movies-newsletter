@@ -66,6 +66,46 @@ type DiscoverPage struct {
 	Discover api.SearchResult
 }
 
+func (DiscoverPage) Pagination(page int) []int {
+	return []int{
+		page - 2,
+		page - 1,
+		page,
+		page + 1,
+		page + 2,
+	}
+}
+
+func (dp DiscoverPage) ShowPagination(page int) bool {
+	return (page < dp.Discover.TotalPages-2 && page > 2)
+}
+
+func (dp DiscoverPage) ShowFirstPage(page int) bool {
+	return page > 3
+}
+
+func (dp DiscoverPage) ShowLastPage(page int) bool {
+	return page < dp.Discover.TotalPages-2
+}
+
+func (dp DiscoverPage) LastPages() []int {
+	return []int{
+		dp.Discover.TotalPages - 4,
+		dp.Discover.TotalPages - 3,
+		dp.Discover.TotalPages - 2,
+		dp.Discover.TotalPages - 1,
+		dp.Discover.TotalPages,
+	}
+}
+
+func (DiscoverPage) PreviousPage(page int) int {
+	return page - 1
+}
+
+func (DiscoverPage) NextPage(page int) int {
+	return page + 1
+}
+
 func DiscoverHandler(w http.ResponseWriter, r *http.Request) {
 	page, err := strconv.Atoi(strings.TrimPrefix(r.URL.Path, "/discover/"))
 	if err != nil {
