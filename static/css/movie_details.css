@@ -40,8 +40,8 @@ img{
     width: 100%;
     margin: .7rem 0;
     padding: .1rem;
-    border-style: solid;
-    border-color: #008CBA;
+    outline-style: solid;
+    outline-color: #008CBA;
 }
 
 .movie-genres{
