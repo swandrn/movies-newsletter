@@ -70,7 +70,7 @@ func FetchMoviesByGenre(pageNumber int, genreId int) (SearchResult, error) {
 		panic(err)
 	}
 
-	response, err := http.Get(fmt.Sprintf("https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=fr-FR&page=%d&sort_by=primary_release_date.desc&with_genres=%d&api_key=%s", pageNumber, genreId, os.Getenv("TMDB_API_KEY")))
+	response, err := http.Get(fmt.Sprintf("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr-FR&page=%d&sort_by=primary_release_date.desc&with_genres=%d&api_key=%s", pageNumber, genreId, os.Getenv("TMDB_API_KEY")))
 	if err != nil {
 		panic(err)
 	}
