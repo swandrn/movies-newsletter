@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/heading.css">
     <link rel="stylesheet" href="/static/css/posters.css">
     <title> {{ .Title }} </title>
 </head>
@@ -12,7 +13,7 @@
         <li><a href="/home">Home</a></li>
         <li><a href="/contact">Contact</a></li>
     </ul>
-    <a href="/discover/1">Discover</a>
+    <a href="/discover/1" class="section-heading"><h2>Discover</h2></a>
     <div class="posters">
         {{ range $i, $e := .Movies }}
             <div class="movie-card">
@@ -22,7 +23,7 @@
                 <img src="/static/img/no_poster_fr.png" alt="movie poster">
                 {{ end }}
                 <div class="text">
-                    <p>{{ .Title }}</p>
+                    <a href="/movie/{{ .Id }}">{{ .Title }}</a>
                 </div>
             </div>
             {{ if eq $i 3 }}
