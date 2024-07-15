@@ -44,3 +44,15 @@ img {
     text-align: center;
     border-radius: 2px;
 }
+
+.movie-card .text a{
+    text-decoration: none;
+}
+
+.movie-card .text a:hover {
+    background-color: #146c8a;
+}
+
+.movie-card .text a:visited {
+    color: white;
+}
