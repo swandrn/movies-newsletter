@@ -1,0 +1,46 @@
+img {
+    display: block;
+    max-width: 240px !important;
+    width: auto;
+    height: auto;
+}
+
+.posters {
+    margin: .3rem auto;
+    width: 80vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    margin: .5rem;
+}
+
+.movie-card .text {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+}
+
+.movie-card .text * {
+    margin: .1rem;
+    padding: .05rem 1rem;
+    color: white;
+    background-color: #008CBA;
+    text-align: center;
+    border-radius: 2px;
+}
